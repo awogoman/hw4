@@ -1,3 +1,4 @@
+/* CSS */
 :root {
   --bg: #04070d;
   --bg-grass: #0d5224;
@@ -32,7 +33,6 @@ body {
 }
 
 /* Header / Nav */
-
 .site-header {
   background: linear-gradient(
     to bottom,
@@ -308,7 +308,6 @@ tbody tr:hover {
 }
 
 /* Scorecard styling */
-
 .scorecard-title {
   font-size: 1rem;
   text-transform: uppercase;
@@ -343,7 +342,6 @@ tbody tr:hover {
 }
 
 /* Footer */
-
 .site-footer {
   margin-top: 2rem;
   background: #05060c;
@@ -361,7 +359,6 @@ tbody tr:hover {
 }
 
 /* Misc */
-
 .small-note {
   font-size: 0.85rem;
   color: var(--text-muted);
@@ -372,7 +369,6 @@ tbody tr:hover {
 }
 
 /* Baseball bullet lists */
-
 .card ul {
   list-style: none;
   padding-left: 0;
@@ -395,7 +391,6 @@ tbody tr:hover {
 
 
 /* Mobile */
-
 @media (max-width: 600px) {
   .site-header-inner {
     flex-direction: column;
