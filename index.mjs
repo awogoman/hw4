@@ -9,10 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-/**
- * Web API helpers – MLB Stats API
- */
-
+/* API helpers – MLB Stats API */
 async function getMlbTeams() {
   const url = "https://statsapi.mlb.com/api/v1/teams?sportId=1";
 
@@ -33,21 +30,13 @@ async function getMlbTeams() {
   }));
 }
 
-/**
- * Real “Player of the Day” from MLB Stats API
- * 1) Get list of MLB teams
- * 2) Pick a random team
- * 3) Get that team’s roster
- * 4) Pick a random player
- * 5) Fetch that player’s season stats (hitting)
- */
-
+/* “Player of the Day” from MLB Stats API */
 async function getRealPlayerOfTheDay() {
-  // 1) teams
+  // teams
   const teams = await getMlbTeams();
   const randomTeam = teams[Math.floor(Math.random() * teams.length)];
 
-  // 2) roster for that team
+  // roster for that team
   const rosterRes = await fetch(
     `https://statsapi.mlb.com/api/v1/teams/${randomTeam.id}/roster`
   );
@@ -63,7 +52,7 @@ async function getRealPlayerOfTheDay() {
   const randomPlayerEntry = roster[Math.floor(Math.random() * roster.length)];
   const playerId = randomPlayerEntry.person.id;
 
-  // 3) detailed player info w/ stats
+  // player info w/ stats
   const playerRes = await fetch(
     `https://statsapi.mlb.com/api/v1/people/${playerId}?hydrate=stats(group=[hitting],type=[season])`
   );
@@ -79,7 +68,7 @@ async function getRealPlayerOfTheDay() {
   let season = "N/A";
 
   if (statsGroups.length > 0) {
-    const hitting = statsGroups[0]; // group: hitting
+    const hitting = statsGroups[0]; // hitting stats
     if (hitting.splits && hitting.splits.length > 0) {
       const lastSplit = hitting.splits[hitting.splits.length - 1];
       const s = lastSplit.stat || {};
@@ -104,10 +93,7 @@ async function getRealPlayerOfTheDay() {
   };
 }
 
-/**
- * Node package helper – still needed for rubric
- * Used for sample scorecard & as a fallback if MLB API fails.
- */
+/* Node package helper – used for sample scorecard */
 function getFakePlayerOfTheDay() {
   return {
     name: faker.person.fullName(),
@@ -134,9 +120,8 @@ function getFakePlayerOfTheDay() {
   };
 }
 
-/* ------------- ROUTES ------------- */
-
-// Home – REAL Player of the Day
+/* Routes */
+// Home
 app.get("/", async (req, res) => {
   try {
     const player = await getRealPlayerOfTheDay();
@@ -156,7 +141,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-// Teams – MLB API
+// Teams
 app.get("/teams", async (req, res) => {
   try {
     const teams = await getMlbTeams();
@@ -175,22 +160,22 @@ app.get("/teams", async (req, res) => {
   }
 });
 
-// 3) Scorecard – use REAL MLB teams + faker scores
+// 3) Scorecard
 app.get("/scorecard", async (req, res) => {
   try {
-    // Get list of all MLB teams
+    // list of all MLB teams
     const teams = await getMlbTeams();
 
-    // Pick two RANDOM different teams
+    // 2 random different teams
     let awayTeam = teams[Math.floor(Math.random() * teams.length)];
     let homeTeam = teams[Math.floor(Math.random() * teams.length)];
 
-    // Ensure they are not the same team
+    // check not the same team
     while (homeTeam.id === awayTeam.id) {
       homeTeam = teams[Math.floor(Math.random() * teams.length)];
     }
 
-    // Generate fake inning-by-inning scores
+    // fake inning-by-inning scores
     const scoreByInning = [];
     let homeTotal = 0;
     let awayTotal = 0;
@@ -215,7 +200,7 @@ app.get("/scorecard", async (req, res) => {
   } catch (err) {
     console.error("Scorecard error:", err.message);
 
-    // fallback to old fake names if API fails
+    // if API fails
     const homeTeam = faker.location.city() + " Sluggers";
     const awayTeam = faker.location.city() + " Aces";
 
@@ -242,12 +227,12 @@ app.get("/scorecard", async (req, res) => {
   }
 });
 
-// Sources – unchanged
+// Sources
 app.get("/sources", (req, res) => {
   res.render("sources", { title: "Sources" });
 });
 
-// About – unchanged
+// About
 app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
 });
