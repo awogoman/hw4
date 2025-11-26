@@ -1,0 +1,68 @@
+<%- include("partials/header", { title }) %>
+
+<section class="hero">
+  <h2>Welcome to the Baseball Data Dugout</h2>
+  <p>
+    This website revamps my HW1 baseball project, now powered by
+    <strong>Express</strong>, <strong>EJS</strong>, a
+    <strong>Node package</strong>, and a live <strong>MLB Web API</strong>.
+  </p>
+</section>
+
+<section class="card card--spotlight">
+  <div class="card-header-row">
+    <h3>Player of the Day</h3>
+    <div class="badge-row">
+      <% if (fromApi) { %>
+        <span class="badge badge-api">MLB Stats API</span>
+      <% } else { %>
+        <span class="badge badge-faker">faker fallback</span>
+      <% } %>
+    </div>
+  </div>
+
+  <p class="player-name"><%= player.name %></p>
+  <p><strong>Team:</strong> <%= player.teamName %></p>
+  <p><strong>Position:</strong> <%= player.position %></p>
+  <p><strong>Jersey #:</strong> <%= player.jerseyNumber %></p>
+  <p><strong>Batting Avg:</strong> <%= player.battingAverage %></p>
+  <p><strong>Home Runs:</strong> <%= player.homeRuns %></p>
+  <% if (player.season && player.season !== "N/A") { %>
+    <p><strong>Season:</strong> <%= player.season %></p>
+  <% } %>
+
+  <% if (player.mlbId) { %>
+    <p class="small-note">
+      View on MLB.com:
+      <a
+        href="https://www.mlb.com/player/<%= player.mlbId %>"
+        target="_blank"
+        rel="noopener"
+      >
+        Player profile
+      </a>
+    </p>
+  <% } %>
+
+  <p class="small-note">
+    <% if (fromApi) { %>
+      This is a <strong>real MLB player</strong> loaded on the server using the
+      <em>MLB Stats API</em>.
+    <% } else { %>
+      The MLB Stats API was unavailable, so this “Player of the Day” is
+      generated on the server using the
+      <code>@faker-js/faker</code> Node package.
+    <% } %>
+  </p>
+</section>
+
+<section class="card">
+  <h3>What you’ll find here:</h3>
+  <ul>
+    <li>Real MLB team data loaded from the MLB Stats API.</li>
+    <li>A sample scorecard with generated game results.</li>
+    <li>Documentation of the sources used.</li>
+  </ul>
+</section>
+
+<%- include("partials/footer") %>

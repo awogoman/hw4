@@ -1,0 +1,430 @@
+:root {
+  --bg: #04070d;
+  --bg-grass: #0d5224;
+  --card: #111726;
+  --card-soft: #161d30;
+  --accent: #b22222;       /* crimson / stitches */
+  --accent-soft: #f4e3cd;  /* sand / infield dirt */
+  --text-main: #fdfdfd;
+  --text-muted: #c7c7c7;
+  --border-soft: #333844;
+}
+
+/* Reset-ish */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  color: var(--text-main);
+
+  /* outfield grass + night sky */
+  background:
+    radial-gradient(circle at top, #1b2743 0, #05070d 55%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(13, 82, 36, 0.6),
+      rgba(13, 82, 36, 0.6) 8px,
+      rgba(3, 25, 11, 0.6) 8px,
+      rgba(3, 25, 11, 0.6) 16px
+    );
+}
+
+/* Header / Nav */
+
+.site-header {
+  background: linear-gradient(
+    to bottom,
+    #151c30 0,
+    #151c30 65%,
+    #0c111f 100%
+  );
+  border-bottom: 4px solid var(--accent);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
+.site-header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.site-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #ffffff 0, #f4f4f4 40%, #d2d2d2 100%);
+  border: 2px solid #e11d2f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 0 0 2px #faf3e5;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-tagline {
+  margin: 0.1rem 0 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.main-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: var(--accent-soft);
+  text-decoration: none;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(244, 227, 205, 0.4);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(7, 11, 22, 0.7);
+  transition:
+    background 0.18s ease,
+    transform 0.12s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.main-nav a:hover {
+  background: rgba(178, 34, 34, 0.2);
+  border-color: var(--accent-soft);
+  box-shadow: 0 0 10px rgba(178, 34, 34, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Baseball stitch divider */
+
+.stitch-divider {
+  height: 12px;
+  background-color: var(--accent-soft);
+  background-image: repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 10px,
+      #b22222 10px,
+      #b22222 12px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0,
+      transparent 10px,
+      #b22222 10px,
+      #b22222 12px
+    );
+  background-size: 20px 12px;
+  border-top: 1px solid #c7955b;
+  border-bottom: 1px solid #c7955b;
+}
+
+/* Layout */
+
+.page-content {
+  max-width: 960px;
+  margin: 1.75rem auto 2.75rem;
+  padding: 0 1.25rem;
+}
+
+/* Hero */
+
+.hero {
+  margin-bottom: 1.5rem;
+  background: radial-gradient(circle at top left, #23446f 0, #111726 45%);
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  padding: 1.2rem 1.4rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid rgba(244, 227, 205, 0.6);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.55), 
+              0 0 0 1px rgba(244, 227, 205, 0.22);
+
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  right: -40px;
+  bottom: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 8px dashed rgba(244, 227, 205, 0.4);
+  background: radial-gradient(circle, transparent 55%, rgba(178, 34, 34, 0.25) 56%);
+  opacity: 0.6;
+}
+
+.hero h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero p {
+  max-width: 40rem;
+}
+
+/* Cards */
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.55);
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(244, 227, 205, 0.05);
+  pointer-events: none;
+}
+
+.card--spotlight {
+  background: radial-gradient(circle at top, #1a2742 0, #111726 52%);
+  border: 1px solid rgba(244, 227, 205, 0.35);
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.card-header-row h3 {
+  margin: 0;
+}
+
+.player-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0.25rem 0 0.6rem;
+}
+
+/* Badges */
+
+.badge-row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.badge-api {
+  background: rgba(18, 110, 51, 0.35);
+  border-color: rgba(117, 255, 154, 0.6);
+}
+
+.badge-faker {
+  background: rgba(178, 34, 34, 0.3);
+  border-color: rgba(255, 192, 203, 0.7);
+}
+
+/* Tables */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+}
+
+th,
+td {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border-soft);
+  text-align: center;
+}
+
+thead th {
+  background: linear-gradient(
+    to bottom,
+    rgba(178, 34, 34, 0.7),
+    rgba(178, 34, 34, 0.5)
+  );
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+tbody tr:hover {
+  background: rgba(244, 227, 205, 0.03);
+}
+
+/* Scorecard table: line-score look */
+
+.table-scorecard th:first-child,
+.table-scorecard td:first-child {
+  text-align: left;
+}
+
+.table-scorecard {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scorecard / line score styling */
+
+.scorecard-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0.4rem 0 0.4rem;
+}
+
+.scorecard-title .team-name {
+  font-weight: 600;
+}
+
+.scorecard-title .away::before {
+  content: "🧳 ";
+}
+
+.scorecard-title .home::before {
+  content: "🏟️ ";
+}
+
+.scorecard-title .at-symbol {
+  margin: 0 0.4rem;
+  opacity: 0.8;
+}
+
+.table-scorecard th.team-label {
+  text-align: left;
+}
+
+.table-scorecard .totals-col {
+  font-weight: 700;
+  background: rgba(178, 34, 34, 0.35);
+}
+
+/* Footer */
+
+.site-footer {
+  margin-top: 2rem;
+  background: #05060c;
+  border-top: 3px solid #3a2b16;
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.footer-text {
+  max-width: 960px;
+  margin: 0.9rem auto 1.4rem;
+  padding: 0 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Misc */
+
+.small-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.error {
+  color: #ffaaaa;
+}
+
+/* Baseball bullet lists */
+
+.card ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.card ul li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.card ul li::before {
+  content: "⚾";
+  position: absolute;
+  left: 0;
+  top: 0.08rem;
+  font-size: 0.95rem;
+}
+
+
+/* Mobile tweaks */
+
+@media (max-width: 600px) {
+  .site-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-content {
+    padding: 0 0.8rem;
+  }
+
+  .card,
+  .hero {
+    padding: 1rem 1rem;
+  }
+
+  .site-title {
+    font-size: 1.1rem;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+}

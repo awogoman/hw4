@@ -1,0 +1,50 @@
+<%- include("partials/header", { title }) %>
+
+<section class="card">
+  <div class="card-header-row">
+    <h2>Scorecard</h2>
+    <span class="badge badge-api">Exhibition Game</span>
+  </div>
+
+  <p class="scorecard-title">
+    <span class="team-name away"><%= awayTeam %></span>
+    <span class="at-symbol">@</span>
+    <span class="team-name home"><%= homeTeam %></span>
+  </p>
+
+  <p class="small-note">
+    Team names are generated through the MLB Stats API, and box score is generated on the server with <code>@faker-js/faker</code>.
+  </p>
+
+  <div class="table-wrapper">
+    <table class="table-scorecard">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <% scoreByInning.forEach(row => { %>
+            <th><%= row.inning %></th>
+          <% }) %>
+          <th class="totals-col">R</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="team-label">Away</th>
+          <% scoreByInning.forEach(row => { %>
+            <td><%= row.awayRuns %></td>
+          <% }) %>
+          <td class="totals-col"><%= awayTotal %></td>
+        </tr>
+        <tr>
+          <th class="team-label">Home</th>
+          <% scoreByInning.forEach(row => { %>
+            <td><%= row.homeRuns %></td>
+          <% }) %>
+          <td class="totals-col"><%= homeTotal %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include("partials/footer") %>

@@ -1,0 +1,16 @@
+{
+  "name": "cst336-hw4",
+  "version": "1.0.0",
+  "description": "HW4 Express version of baseball site",
+  "main": "index.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  }
+}

@@ -1,0 +1,32 @@
+<%- include("partials/header", { title }) %>
+
+<section class="card">
+  <h2>Sources &amp; Technology</h2>
+
+  <h3>Web API</h3>
+  <ul>
+    <li>
+      <a href="https://statsapi.mlb.com" target="_blank" rel="noopener">
+        MLB Stats API
+      </a>
+      – used to load the list of MLB teams on the teams page and the “Player of the Day”
+      on the home page.
+    </li>
+  </ul>
+
+  <h3>Node Package</h3>
+  <ul>
+    <li>
+      <code>@faker-js/faker</code> – used to generate the sample score data on the scorecard page. Both load new data upon refresh.
+    </li>
+  </ul>
+
+  <h3>Other Tools</h3>
+  <ul>
+    <li>Express – web framework</li>
+    <li>EJS – templating engine with partials</li>
+    <li>CSS – for baseball-themed layout and styling</li>
+  </ul>
+</section>
+
+<%- include("partials/footer") %>
