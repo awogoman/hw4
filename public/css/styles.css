@@ -3,14 +3,13 @@
   --bg-grass: #0d5224;
   --card: #111726;
   --card-soft: #161d30;
-  --accent: #b22222;       /* crimson / stitches */
-  --accent-soft: #f4e3cd;  /* sand / infield dirt */
+  --accent: #b22222; 
+  --accent-soft: #f4e3cd;
   --text-main: #fdfdfd;
   --text-muted: #c7c7c7;
   --border-soft: #333844;
 }
 
-/* Reset-ish */
 * {
   box-sizing: border-box;
 }
@@ -21,7 +20,6 @@ body {
     Roboto, sans-serif;
   color: var(--text-main);
 
-  /* outfield grass + night sky */
   background:
     radial-gradient(circle at top, #1b2743 0, #05070d 55%),
     repeating-linear-gradient(
@@ -120,7 +118,6 @@ body {
 }
 
 /* Baseball stitch divider */
-
 .stitch-divider {
   height: 12px;
   background-color: var(--accent-soft);
@@ -144,7 +141,6 @@ body {
 }
 
 /* Layout */
-
 .page-content {
   max-width: 960px;
   margin: 1.75rem auto 2.75rem;
@@ -152,7 +148,6 @@ body {
 }
 
 /* Hero */
-
 .hero {
   margin-bottom: 1.5rem;
   background: radial-gradient(circle at top left, #23446f 0, #111726 45%);
@@ -192,7 +187,6 @@ body {
 }
 
 /* Cards */
-
 .card {
   background: var(--card);
   border-radius: 16px;
@@ -238,7 +232,6 @@ body {
 }
 
 /* Badges */
-
 .badge-row {
   display: flex;
   gap: 0.4rem;
@@ -267,7 +260,6 @@ body {
 }
 
 /* Tables */
-
 .table-wrapper {
   overflow-x: auto;
 }
@@ -305,8 +297,7 @@ tbody tr:hover {
   background: rgba(244, 227, 205, 0.03);
 }
 
-/* Scorecard table: line-score look */
-
+/* Scorecard */
 .table-scorecard th:first-child,
 .table-scorecard td:first-child {
   text-align: left;
@@ -316,7 +307,7 @@ tbody tr:hover {
   font-variant-numeric: tabular-nums;
 }
 
-/* Scorecard / line score styling */
+/* Scorecard styling */
 
 .scorecard-title {
   font-size: 1rem;
@@ -403,7 +394,7 @@ tbody tr:hover {
 }
 
 
-/* Mobile tweaks */
+/* Mobile */
 
 @media (max-width: 600px) {
   .site-header-inner {
